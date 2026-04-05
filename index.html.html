@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saurabh Kumar | Chemical Engineer Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1e1e24;
+            --accent: #00d2ff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --modal-bg: #1a1a1d;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Helvetica, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        .header { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 30px; margin-bottom: 40px; }
+        .header img { width: 160px; height: 160px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; margin-bottom: 15px; }
+        h1 { font-size: 3rem; margin: 0; color: var(--accent); letter-spacing: 2px; }
+        .contact-bar { margin-top: 10px; font-size: 0.9rem; color: var(--text-dim); }
+        .contact-bar a { color: var(--accent); text-decoration: none; font-weight: bold; }
+
+        /* --- TABS --- */
+        .nav-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn {
+            background: transparent; border: 2px solid var(--accent); color: var(--accent);
+            padding: 10px 20px; cursor: pointer; border-radius: 30px; font-weight: bold; transition: 0.4s; font-size: 0.9rem;
+        }
+        .tab-btn.active, .tab-btn:hover { background: var(--accent); color: #000; }
+
+        /* --- CONTENT AREA --- */
+        .tab-content { display: none; background: var(--bg-card); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .active-tab { display: block; animation: slideUp 0.5s ease; }
+        @keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+        /* --- CLICKABLE ITEMS --- */
+        .clickable-item {
+            padding: 15px; border-left: 4px solid var(--accent); background: rgba(255,255,255,0.03);
+            margin-bottom: 15px; cursor: pointer; transition: 0.3s;
+        }
+        .clickable-item:hover { background: rgba(0, 210, 255, 0.1); transform: translateX(10px); }
+        .clickable-item h3 { margin: 0; color: var(--accent); font-size: 1.2rem; }
+        .clickable-item p { margin: 5px 0 0; font-size: 0.9rem; color: var(--text-dim); }
+
+        /* --- THE PROFESSIONAL MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95); overflow-y: auto;
+        }
+        .modal-body {
+            background-color: var(--modal-bg);
+            margin: 50px auto; padding: 50px; width: 85%; max-width: 800px;
+            border: 1px solid #333; border-radius: 5px;
+            font-family: "Times New Roman", Times, serif; 
+            color: #efefef; font-size: 1.15rem; line-height: 1.8;
+        }
+        .modal-body h2 { color: var(--accent); border-bottom: 1px solid #444; padding-bottom: 15px; font-family: 'Segoe UI', sans-serif; }
+        .close-x { float: right; font-size: 40px; color: var(--accent); cursor: pointer; margin-top: -40px; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <img src="profile.png" alt="Saurabh Kumar">
+        <h1>SAURABH KUMAR</h1>
+        <div class="contact-bar">
+            +91 9798703474 | <a href="mailto:saurabhkumarsun2225@gmail.com">saurabhkumarsun2225@gmail.com</a> | 
+            <a href="https://linkedin.com/in/saurabh-kumar-65358a22b" target="_blank">LinkedIn Profile ↗</a>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab('summary')">Summary</button>
+        <button class="tab-btn" onclick="openTab('edu')">Education</button>
+        <button class="tab-btn" onclick="openTab('exp')">Experience</button>
+        <button class="tab-btn" onclick="openTab('projects')">Academic Projects</button>
+        <button class="tab-btn" onclick="openTab('skills')">Skills</button>
+        <button class="tab-btn" onclick="openTab('responsibility')">Responsibility</button>
+        <button class="tab-btn" onclick="openTab('activities')">Activities</button>
+    </nav>
+
+    <section id="summary" class="tab-content active-tab">
+        <div class="clickable-item" onclick="openModal('summary_detail')">
+            <h3>Professional Profile</h3>
+            <p>Professional summary and career objectives.</p>
+        </div>
+    </section>
+
+    <section id="edu" class="tab-content">
+        <div class="clickable-item" onclick="openModal('mtech')">
+            <h3>Integrated M.Tech in Chemical Engineering</h3>
+            <p>ICT-IOC Bhubaneswar | Expected June 2026 | CGPA: 8.06</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('hsc')">
+            <h3>Higher Secondary Certificate (HSC)</h3>
+            <p>Jeevan Jyoti Public School | 2020 | 75.2%</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('ssc')">
+            <h3>Secondary School Certificate (SSC)</h3>
+            <p>Jawahar Navodaya Vidyalaya, Nawada | 2018 | 84%</p>
+        </div>
+    </section>
+
+    <section id="exp" class="tab-content">
+        <div class="clickable-item" onclick="openModal('nirmaan')">
+            <h3>Nirmaan Aoudhyogik Rasayan Pvt. Ltd.</h3>
+            <p>Nagpur | Jun 2025 – Nov 2025 | Process Engineering Intern</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('iffco')">
+            <h3>IFFCO Paradeep</h3>
+            <p>Paradeep | Nov 2024 – Feb 2025 | Process Engineering Intern</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('iocl')">
+            <h3>IOCL Barauni Refinery</h3>
+            <p>Barauni | Sept 2022 – Nov 2022 | Vocational Trainee </p>
+        </div>
+        <div class="clickable-item" onclick="openModal('taiwan')">
+            <h3>Advanced Membrane Separation Laboratory, NTUST, Taiwan</h3>
+            <p>Taipei, Taiwan | Apr 2024 - Jun 2024 | Research Internship </p>
+        </div>
+        <div class="clickable-item" onclick="openModal('iisc')">
+            <h3> Center for Sustainable Technology, IISc Bengaluru</h3>
+            <p>Bengaluru | Sep 2023 - Nov 2023 | Research Internship </p>
+        </div>
+	 <div class="clickable-item" onclick="openModal('Bt')">
+            <h3> Bombay Technologist, ICT -IOCB </h3>
+            <p>2023 | ICT-IOCB | Mar 2023 - Jun 2023 | Research Intern</p>
+        </div>
+
+    </section>
+
+    <section id="projects" class="tab-content">
+        <div class="clickable-item" onclick="openModal('biodiesel')">
+            <h3>Bio-diesel Production</h3>
+            <p>Waste cooking oil conversion research.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('ultrasonic')">
+            <h3>Ultrasonic Cleaning Techniques</h3>
+            <p>Seminar on In-Situ Maintenance of Heat Exchangers.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('nanosuspensions')">
+            <h3>Evaporation Dynamics</h3>
+            <p>Stability studies of nanosuspensions for enhanced performance.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="tab-content">
+        <div class="clickable-item" onclick="openModal('core_skills')">
+            <h3> Chemical Engineering Skills</h3>
+            <p>Software skills | material Characterisation skills | Research Skills.</p>
+        </div>
+        
+    </section>
+
+    <section id="responsibility" class="tab-content">
+        <div class="clickable-item" onclick="openModal('student_guide')">
+            <h3>Student Guide</h3>
+            <p>Mentored 10 incoming students for academic adaptation.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('scout_leader')">
+            <h3>Bharat Scout and Guide</h3>
+            <p>Served as a Group leader.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('yoga_founder')">
+            <h3>Yoga Club Established</h3>
+            <p>Established and led the Yoga Club at JNV Nawada.</p>
+        </div>
+    </section>
+
+    <section id="activities" class="tab-content">
+        <div class="clickable-item" onclick="openModal('yoga_detail')">
+            <h3>Yoga</h3>
+            <p>Health, wellness, and leadership through yoga.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('chess_detail')">
+            <h3>Chess</h3>
+            <p>Strategy and critical thinking exercises.</p>
+        </div>
+        <div class="clickable-item" onclick="openModal('others_detail')">
+            <h3>Other Interests</h3>
+            <p>Co-curricular certifications and workshops.</p>
+        </div>
+    </section>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-body">
+            <span class="close-x" onclick="closeModal()">&times;</span>
+            <div id="modalText"></div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active-tab'));
+            const btns = document.querySelectorAll('.nav-tabs .tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active-tab');
+            event.currentTarget.classList.add('active');
+        }
+
+        const data = {
+            summary_detail: `<h2>Professional Summary</h2>
+               <p style="text-align: justify;">I am currently in the final year of my Integrated M.Tech in Chemical Engineering at the Institute of Chemical Technology, Mumbai – IndianOil Odisha Campus, Bhubaneswar, and will be graduating in <strong>June 2026</strong>. I have developed a strong foundation in core chemical engineering principles, complemented by hands-on experience with real industrial systems and processes.</p>
+
+		<p style="text-align: justify;">My academic and professional interests lie in <strong> process engineering, research and development, and chemical manufacturing, particularly within the petrochemical and specialty chemicals sectors.</strong> I am driven by a strong inclination toward optimizing process efficiency, improving yield, and enhancing cost-effectiveness while ensuring strict adherence to safety, sustainability, and environmental standards.</p>
+
+		<p style="text-align: justify;">Throughout my academic journey, I have completed six internships across reputed organizations, including IISc Bangalore, IFFCO, IOCL, international exposure in Taiwan, and Nirmaan Aoudhyogik Rasayan Pvt. Ltd. These experiences have provided me with diverse industrial exposure, strengthening my technical, analytical, and problem-solving skills.</p>
+
+		<p style="text-align: justify;">I am currently seeking full-time opportunities in chemical engineering and related fields, where I can apply my knowledge, contribute to innovative solutions, and grow within a dynamic and challenging professional environment. I am particularly interested in roles that offer continuous learning, technical development, and meaningful industry impact.
+</p>`,
+            
+            nirmaan: `<h2>Nirmaan Aoudhyogik Rasayan Private Limited</h2>
+		 <p style="text-align: justify;"><strong> Giudance: </strong> Smt. Umadevi Rambhau Gurav (Managing Director)
+                 <p style="text-align: justify;">During my internship, I worked on the synthesis of salicylaldehyde using two key methods: the <strong>Riemer–Tiemann reaction</strong> and the <strong>methoxide process</strong>. I performed a comparative evaluation of both routes to understand their efficiency, scalability, and suitability for industrial production. This helped me gain practical insight into reaction pathways, process selection, and the importance of selecting economically viable, scalable chemical processes for industrial applications.</p>
+                
+                <p style="text-align: justify;">I was actively involved in the purification of crude salicylaldehyde using vacuum and batch distillation techniques. Through process optimization at the Research and Development laboratory, I achieved product <strong> purity of 97.5%</strong> using a batch distillation setup. This experience strengthened my understanding of separation processes, impurity removal, and the role of distillation in improving product quality in chemical manufacturing.</p>
+                
+               
+                <p style="text-align: justify;"> As part of the project, I conducted a <strong>techno-economic analysis</strong> to evaluate the feasibility of salicylaldehyde production at scale. The study indicated that for a production capacity of approximately 500 kg, the manufacturing cost could be optimized to around <strong>₹412 per kg</strong>. This analysis provided valuable exposure to cost estimation, raw material considerations, and the importance of economic viability in process development.</p>
+                
+               
+                <p style="text-align: justify;">I further contributed to scaling up the process from laboratory to pilot plant level using the methoxide route. During this phase, approximately <strong>10 kg of salicylaldehyde</strong> was successfully produced, allowing me to understand practical challenges such as scale-up limitations, process control, and equipment handling. This experience gave me insight into how laboratory processes are translated into real industrial operations.</p>
+                
+               
+                <p style="text-align: justify;">Overall, my internship at <strong>Nirmaan Aoudhyogik Rasayan Private Limited</strong> provided comprehensive exposure to process development, purification techniques, scale-up, and economic evaluation. Working extensively on salicylaldehyde enhanced my practical knowledge of chemical engineering concepts and strengthened my ability to approach real-world industrial problems with a process-oriented and analytical mindset.</p>`,  
+          
+           iffco: `<h2>Internship at IFFCO Paradeep – Industrial Summary</h2>
+		<p style="text-align: justify;"><strong> Giudance: </strong> Mr. P.vankateshwarlu, (Sr. Process Engineer)         
+       <p style="text-align: justify;"> completed my internship at <strong>Indian Farmers Fertilizer Cooperative Limited (IFFCO)</strong>, Paradeep Unit, one of India’s largest and most advanced fertilizer manufacturing complexes. The Paradeep plant is recognized for its integrated production facilities, including phosphatic fertilizers and sulphuric acid units. This exposure provided me with a comprehensive understanding of large-scale continuous operations, plant layout, and the critical role of chemical engineering in the fertilizer industry.</p>
+                
+              <p style="text-align: justify;">The sulphuric acid plant at IFFCO Paradeep plays a vital role in supporting phosphoric acid production. The facility operates on modern process technologies involving <strong>sulphur combustion, gas conversion, and multi-stage absorption systems</strong>. During my tenure, I studied the overall process flow, key industrial equipment, and the operational strategies employed to maintain high efficiency, stringent safety standards, and environmental compliance in large-scale acid production.</p>
+                
+                <p style="text-align: justify;">As part of my core project, I worked on the <strong>Comprehensive Analysis of DCDA Sulfuric Acid Plant Design Using Aspen Plus</strong>. I analyzed critical process parameters, gas flow behavior, and system thermal efficiency. The objective was to evaluate how varying process conditions influence conversion rates and overall plant performance. This project significantly strengthened my grasp of <strong>reaction engineering, mass and heat transfer concepts</strong>, and the utility of process simulation tools in optimizing industrial operations.</p>
+                
+               <p style="text-align: justify;">Overall, my experience at <strong>IFFCO Paradeep</strong> provided invaluable exposure to industrial-scale chemical manufacturing and process integration. It enhanced my ability to bridge the gap between theoretical engineering concepts and real-world applications while improving my understanding of process optimization, industrial safety protocols, and the operational discipline required in a major fertilizer industrial setup.</p>`, 
+
+           iocl: `<h2>Internship at IOCL – Barauni Refinery</h2>
+		<p style="text-align: justify;"><strong> Giudance: </strong> Mr. Saurabh Sett, (DGM, Production)
+                <p style="text-align: justify;">I completed my professional internship at <strong>Indian Oil Corporation Limited (IOCL)</strong>, a premier public sector enterprise in India's oil and gas sector. The refinery environment provided me with significant exposure to large-scale petroleum processing operations, spanning <strong>crude oil handling, primary refining units, and product distribution systems</strong>. This experience was instrumental in helping me grasp the high level of complexity and integration inherent in modern refinery processes.</p>
+                
+                <p style="text-align: justify;">During my tenure, I conducted a detailed study of essential refinery units, including <strong>Atmospheric and Vacuum Distillation (ADU/VDU), Fluid Catalytic Cracking (FCCU), and various treatment units</strong>. These processes are fundamental in transforming crude oil into high-value products such as LPG, Motor Spirit (Petrol), High-Speed Diesel, and petrochemical feedstocks. I closely observed the functioning of critical process equipment, automated control systems, and the rigorous safety measures required to ensure process reliability.</p>
+                
+                <p style="text-align: justify;">A key focus of my learning involved the interpretation of <strong>Process Flow Diagrams (PFDs)</strong>, understanding unit interconnections, and monitoring plant operations to ensure continuous production. Furthermore, I gained vital exposure to industrial safety practices (HSE), preventive maintenance strategies, and operational monitoring protocols, which are paramount in high-risk, high-pressure refinery environments.</p>
+                
+                <p style="text-align: justify;">Overall, my internship at <strong>IOCL</strong> provided a robust foundation in refinery operations, process engineering fundamentals, and international industrial safety standards. It significantly enhanced my ability to bridge the gap between theoretical chemical engineering principles and real-world petroleum refining, further strengthening my commitment to a career in the oil, gas, and petrochemical industries.</p>`, 
+
+
+           taiwan: `<h2>International Research Internship at NTUST (Taiwan Tech)</h2>
+                <p style="text-align: justify;"><strong> Giudance: </strong> Prof. chien Chieh Hu. (Professor, NTUST)
+                <p style="text-align: justify;">I gained international research experience through a prestigious internship at the <strong>National Taiwan University of Science and Technology (NTUST)</strong>, Taiwan. I served in the <strong>Advanced Membrane Separation Laboratory</strong> from April 2024 to June 2024. This opportunity allowed me to operate within a high-intensity, research-driven environment with access to world-class laboratory facilities and global academic practices, significantly broadening my perspective on cutting-edge chemical engineering technologies.</p>
+                
+                
+               <p style="text-align: justify;">The laboratory specializes in pioneering membrane technologies for separation and desalination applications. During my tenure, I focused on <strong>pervaporation processes and advanced membrane-based desalination systems</strong>, which serve as energy-efficient alternatives to traditional thermal separation techniques. I conducted in-depth studies on working principles, critical performance parameters, and the rigorous research methodologies required to evaluate membrane flux and selectivity in industrial-scale applications.</p>
+                
+                
+               <p style="text-align: justify;">As part of my core project titled <strong>“Self-heating and Energy Efficient Joule Heating Membrane for Desalination via Pervaporation,”</strong> I led the synthesis of a specialized <strong>graphene-coated alginate membrane</strong>. The resulting material demonstrated exceptional performance, achieving a <strong>99.9% salt rejection rate</strong> with a permeation flux of <strong>7.21 kg/m²·h</strong>. I also performed detailed investigations into membrane transport behavior and thermal characteristics to validate its potential for sustainable, low-energy desalination systems.</p>
+                
+                
+                <p style="text-align: justify;">Overall, this international tenure at <strong>Taiwan Tech</strong> strengthened my expertise in material synthesis, experimental analysis, and advanced characterization. It enhanced my capability to collaborate within a multidisciplinary and multicultural team, deepening my understanding of sustainable chemical technologies and preparing me for high-impact, innovation-driven roles in the global engineering landscape.</p>`, 
+
+            iisc: `<h2>Research Internship at IISc Bengaluru – Sustainable Technology</h2>
+		<p style="text-align: justify;"><strong> Giudance: </strong> Dr. Sreenivasan Ramaswami, (Assistant Professor IISc.)        
+         <p style="text-align: justify;">I completed a prestigious research internship at the <strong>Indian Institute of Science (IISc)</strong>, specifically within the <strong>Centre for Sustainable Technology</strong>, from September 2023 to November 2023. This tenure provided me with rigorous exposure to environmental engineering and sustainable wastewater treatment paradigms. Operating within one of India's premier research institutions allowed me to tackle real-world challenges related to water quality and industrial treatment efficiency.</p>
+                
+                
+                <p style="text-align: justify;">The Centre for Sustainable Technology is dedicated to developing eco-friendly solutions for complex environmental hurdles. During my internship, I focused on <strong>biological treatment processes and advanced reactor systems</strong>. I gained a deep technical understanding of how microbial reaction kinetics are harnessed to neutralize contaminants and improve water quality within <strong>Batch and Mixed Batch Bioreactors</strong>.</p>
+                
+                
+                <p style="text-align: justify;">As part of my core project titled <strong>“Studies of Microbial Reaction in Batch Reactor and Mixed Batch Bioreactor,”</strong> I was responsible for analyzing treatment efficiency and optimizing process parameters. My work yielded significant results, including a <strong>98% reduction in Total Organic Carbon (TOC)</strong> and <strong>95.2% Total Nitrogen removal</strong>. Furthermore, I successfully reduced wastewater salinity from <strong>600 ppm to 50 ppm</strong>. This project was instrumental in my understanding of reaction kinetics and performance evaluation in biological systems.</p>
+                
+            
+               <p style="text-align: justify;">Overall, this internship at <strong>IISc</strong> significantly enhanced my capabilities in research methodology, analytical thinking, and environmental process engineering. It provided me with high-level insights into sustainable treatment technologies and their industrial relevance, preparing me to contribute effectively to the fields of green engineering and process sustainability.</p>`,
+
+
+		Bt: `<h2> Bombay Technologist- ICTIOCB</h2>
+		<p style="text-align: justify;"><strong> Guidance: </strong> Dr. Abhay Vijay Kotkondawar, (Assistant Professor ICT-IOCB)        
+         <p style="text-align: justify;">I have completed a research internship at ICT-IOCB through BTUGRP, where I worked on studying the adsorption behavior of nitrobenzene on tire wear microplastic particles. The project focused on understanding how different particle sizes and concentrations influence sorption, addressing an important environmental concern related to microplastic pollution and toxic organic compounds. </p>
+
+	<p style="text-align: justify;">During the project, I investigated the sorption behavior of nitrobenzene onto tire crumb particles of varying sizes, with a focus on adsorption kinetics and thermodynamic feasibility. I analyzed the spontaneity and adsorption characteristics by evaluating concentration-dependent interactions and time-based uptake behavior. Experimental work involved preparing controlled systems across a concentration range of 5–200 ppm and characterizing adsorption using UV-Visible spectroscopy (λmax ≈ 268 nm) along with calibration curves exhibiting strong linearity (R² ≈ 0.98). Surface morphology and particle characteristics were further examined using SEM analysis to correlate structural properties with adsorption performance. </p>
+
+<p style="text-align: justify;">The results indicated rapid adsorption kinetics with significant uptake (~60–70%) within the initial 30 minutes, followed by a gradual approach to equilibrium. Adsorption capacity (qt) increased with time and initial concentration, confirming favorable mass transfer and surface interaction phenomena. Higher adsorption efficiencies were observed for smaller particle sizes due to increased surface area and active sites, with removal efficiencies reaching ~94% for activated carbon, ~85% for smaller particles, ~82% for medium particles, and ~77% for larger particles over 24 hours. The study demonstrated that adsorption follows typical kinetic trends with decreasing rate over time and highlighted the influence of particle size on equilibrium capacity and adsorption efficiency. </p>
+
+<p style="text-align: justify;">Through this internship, I developed strong practical skills in sample preparation, adsorption studies, UV-Vis spectroscopy, SEM analysis, data interpretation, and experimental design. Additionally, I gained hands-on experience in handling hazardous chemicals, laboratory safety protocols, and analyzing environmental impact, strengthening my foundation in research and process-oriented problem solving.</p>`,
+
+
+            mtech: `<h2>Institute of Chemical Technology (ICT-IOCB)</h2>
+                <p style="text-align: justify;">I secured admission to this prestigious program through JoSAA counseling, based on my performance in JEE Mains. This provided me the opportunity to pursue Chemical Engineering at ICT Mumbai – IndianOil Odisha Campus, Bhubaneswar, an institute known for its strong academic rigor and industry-oriented training in the chemical and petrochemical domain.
+
+	<p style="text-align: justify;">The Integrated M.Tech (I.M.Tech) program is uniquely structured into 15 trimesters (each of 4 months), ensuring a balanced combination of academic learning and industrial exposure. Out of these, 9 trimesters are focused on theoretical coursework, while 6 trimesters are dedicated to in-plant training. These industrial trainings are conducted in real manufacturing environments, where theoretical concepts are applied to practical problems, enabling a deeper understanding of process operations, plant systems, and real-world engineering challenges.<p>
+
+		<p style="text-align: justify;">The curriculum covers a comprehensive range of subjects across chemical and petroleum engineering. Key courses include:</p>
+<p style="text-align: justify;"><strong>Chemical Engineering</strong>: Heat Transfer Operations, Mass Transfer Operations, Chemical Reaction Engineering, Transport Phenomena, Plant Design and Economics, Process Safety, Environmental Engineering, and Life Cycle Analysis.<p>
+		<p style="text-align: justify;"> <strong> Petroleum Engineering:</strong> Petroleum Technology, Refining Processes, Refinery Engineering, Reservoir Technology, Petrochemical Technology, and Industrial Catalysis.</p>
+
+<p style="text-align: justify;">This combination of subjects has provided me with a strong foundation in process design, reaction engineering, separation techniques, and industrial applications.<p>
+
+		<p style="text-align: justify;">In addition to academic learning, my time at ICT has helped me develop essential professional and technical skills. I have gained experience in research methodologies, data analysis, and technical reporting, along with proficiency in MS Office tools and professional presentations. The rigorous academic environment and continuous industrial exposure have strengthened my analytical thinking, problem-solving ability, and professional discipline, preparing me to effectively contribute in industrial and research-oriented roles</p>`,
+
+            hsc: `<h2>Jeevan Jyoti Public School (HSC)</h2>
+   	<p style="text-align: justify;">I completed my higher secondary education at <strong>Jeevan Jyoti Public School</strong>, Sahajpura, Nawada. The school is affiliated with the CBSE board and was established in 2006, offering a rigorous English-medium curriculum focused on academic excellence, discipline, and holistic development. It provides a structured learning environment supported by advanced laboratories and library facilities designed to foster both academic and personal growth.</p>
+    
+  	<p style="text-align: justify;">I secured admission through a competitive internal aptitude-based selection process, building upon my previous academic foundation from <strong>Jawahar Navodaya Vidyalaya (JNV), Nawada</strong>. This transition allowed me to continue my journey in a disciplined environment that significantly strengthened my conceptual understanding and academic consistency.</p>
+    
+    	<p style="text-align: justify;">Admitted in April 2018, I specialized in <strong>Physics, Chemistry, and Mathematics (PCM)</strong>. This academic combination laid the essential groundwork for my further studies in Chemical Engineering at ICT-IOCB. The curriculum demanded high-level analytical thinking and technical precision, which helped shape my approach to engineering challenges.</p>
+    
+    <p style="text-align: justify;">During my tenure, I developed vital professional skills such as analytical problem-solving, effective communication, and time management. The school's environment instilled a sense of discipline that has been a cornerstone of my academic career. I successfully completed my Higher Secondary (HSC) examination with an overall score of <strong>75.2%</strong>, a result that reflects my dedication and prepared me for the rigors of an Integrated M.Tech program.</p>`,
+
+            ssc: `<h2>Jawahar Navodaya Vidyalaya, Nawada</h2>
+                <p style="text-align: justify;">My academic journey began with securing admission to <strong>Jawahar Navodaya Vidyalaya (JNV)</strong> after successfully clearing the Jawahar Navodaya Vidyalaya Selection Test (JNVST) in Class 6. I was allotted a confirmed seat at Jawahar Navodaya Vidyalaya, Rewar, Nawada, on 17th August 2013, which marked a significant milestone in my early education.</p>
+                
+                <p style="text-align: justify;">Studying at Navodaya provided me with a highly disciplined and competitive environment, where I received quality education along with holistic development. The residential schooling system was instrumental in helping me develop independence, adaptability, and strong interpersonal skills. It also instilled in me core values such as consistency, self-discipline, and a strong work ethic from a very early stage.</p>
+                
+                <p style="text-align: justify;">During my time at JNV, I mastered essential life and professional skills including teamwork, leadership, and a professional approach toward responsibilities. I actively participated in diverse activities like <strong>Yoga, Chess</strong>, and various sports, which contributed significantly to my overall personality development and mental well-being.</p>
+                
+                <p style="text-align: justify;">I successfully completed my matriculation (10th) in March 2018 with an overall score of <strong>84%</strong>, reflecting a strong academic foundation and a dedication to excellence that has continued throughout my higher education.</p>`,
+
+            core_skills: `<h2> General Skills </h2>
+                <p><strong>General Professional Skills:</strong> Research skills, Analytical skills, Problem-solving skills, Report writing, and Professional presentation.</p>
+                                                                                                                                                                                        
+               <strong>Process Simulation & Engineering:</strong> Aspen Plus, OpenLCA, Origin, MATLAB.</p>
+                                                                                                                                                                          
+               <p><strong>Design & Documentation:</strong> Adobe Photoshop and Microsoft Office Suite (Word, Excel, PowerPoint).</p>
+
+                <strong>Materials Characterization skills:</strong> UV-vis spectrophotometer, FTIR & ATR-FTIR, DVS, SEM, AAS, TOC & TN Analyzer, GC-MS, HPLC, Contact angle meter.</p>
+
+                <strong>Petroleum Characterization Instruments:</strong> Flash point, Pour point, Redwood viscosity meter, R.V.P test, Copper corrosion test, and Distillation column operations.</p>
+                </p>`,
+            
+            biodiesel: `<h2>Academic Project – Master’s Thesis</h2>
+               <p><strong>Guidance:</strong> Dr. Abhay Vijay Kotkondawar, and Dr. Kruthi Doriya</p>
+
+              <p style="text-align: justify;">I am currently working on my Master’s thesis titled <strong>“Biodiesel Production from Waste Cooking Oil,”</strong> which focuses on developing a sustainable and cost-effective alternative fuel. This project involves the conversion of waste cooking oil into biodiesel using transesterification, along with the evaluation of process efficiency and product quality. The study emphasizes optimizing reaction conditions, improving yield, and ensuring compliance with fuel standards.</p>
+                
+                <p style="text-align: justify;">Through this research, I am gaining hands-on experience in reaction engineering, process optimization, and analytical evaluation, while also understanding the environmental and economic benefits of utilizing waste resources. This project reflects my interest in sustainable energy, green chemistry, and industrial process development, and I am actively continuing work on this topic as part of my academic research.</p>`,
+
+           ultrasonic: `<h2>Seminar: Ultrasonic Cleaning of Heat Exchangers</h2>
+                <p><strong> Guidance:</strong> Dr. Ritesh S. Malani</p>
+                
+                 <p style="text-align: justify;">I presented a seminar titled <em>“Advancements in Ultrasonic Cleaning Techniques for In-Situ Maintenance of Heat Exchangers: A Sustainable and Non-Invasive Approach.”</em> The core focus was addressing <strong>industrial fouling</strong>, which drastically reduces heat transfer efficiency and increases energy consumption. Traditional mechanical and chemical cleaning methods often require costly shutdowns and hazardous chemicals, making them less sustainable in modern industry.</p>
+                
+  
+                <p style="text-align: justify;">The seminar introduced ultrasonic cleaning as an eco-friendly alternative operating on the principle of <strong>acoustic cavitation</strong>. High-frequency sound waves generate microscopic bubbles that collapse with high energy, producing micro-jets and shock waves. These localized forces effectively strip away scale, sludge, and organic deposits from complex internal surfaces without the need for equipment disassembly.</p>
+                
+
+              <p style="text-align: justify;">I discussed various configurations, including <strong>Immersion Tank Systems</strong> for offline maintenance and <strong>Clamp-on Systems</strong> for in-situ, online cleaning. These technologies are transformative for continuous-process industries such as petroleum, food processing, and pharmaceuticals, where reducing downtime is critical to operational profitability.</p>
+                
+               
+                <p>A key highlight was the comparison between ultrasonic and traditional methods. Benefits include:
+                    <ul>
+                        <li>Significant reduction in equipment downtime.</li>
+                        <li>Lower chemical footprint and labor requirements.</li>
+                        <li>Enhanced equipment lifespan and energy efficiency.</li>
+                        <li>Superior cleaning of complex geometries (e.g., shell-and-tube bundles).</li>
+                    </ul>
+                </p>
+                
+                
+                <p style="text-align: justify;">While addressing limitations like initial setup costs, I highlighted emerging innovations such as <strong>Smart Ultrasonic Control Systems</strong> and integration with <strong>Clean-in-Place (CIP)</strong> technologies. These advancements, combined with real-time fouling sensors, are moving the industry toward automated, predictive maintenance strategies that align with modern sustainability goals.</p>`,
+
+            nanosuspensions: `<h2>Evaporation Dynamics</h2>
+                <p><strong>Guidance:</strong> Dr. Abhay Vijay Kotkondawar</p>
+                <p style="text-align: justify;">I worked on the project titled “Solar Steam Generation Using Carbon Composites” under the guidance of Dr. Abhay Vijay Kotkondawar, where I was actively involved in the synthesis, characterization, and performance evaluation of carbon-based materials for sustainable steam generation. The project focused on utilizing solar energy as a clean and renewable source to generate steam, reducing dependence on conventional fossil fuels and promoting environmentally friendly solutions.</p>
+                
+              <p style="text-align: justify;">As part of this work, I synthesized carbon composites using the Tour method and performed physico-chemical characterization using techniques such as FTIR and SEM to understand material properties. I also prepared nanosuspensions of the synthesized materials to enhance thermal conductivity and improve heat transfer efficiency. These nanosuspensions played a key role in improving solar absorption and localized heat generation.</p>
+
+                <p style="text-align: justify;"> successfully carried out experimental studies including temperature profiling, evaporation rate analysis, and mass loss evaluation, which helped in understanding the evaporation kinetics and overall steam generation performance of the developed system. The results demonstrated improved solar energy utilization, efficient heat transfer, and enhanced steam generation capability of the carbon composites.</p>
+                
+                <p style="text-align: justify;">This project provided me with valuable experience in nanomaterial synthesis, experimental analysis, and renewable energy applications, and strengthened my understanding of sustainable process development and thermal systems.</p>`,
+
+            student_guide: `<h2>Position of Responsibility: Student Guide</h2>
+                <p style="text-align: justify;">I was selected as a <strong>Student Guide</strong> at the Institute of Chemical Technology (ICT-IOCB), where I served as a primary mentor for a group of <strong>10 incoming freshers</strong>. My core responsibility was to facilitate their smooth transition into the academic and social fabric of the institute.</p>
+                
+                <p style="text-align: justify;"><strong>Key Contributions:</strong><br>
+                 <strong>Academic & Institutional Mentorship:</strong> I provided comprehensive guidance regarding college rules, administrative procedures, and the rigorous trimester system to ensure students were well-prepared for their academic journey.<br>
+                 <p style="text-align: justify;"><strong>Campus Integration:</strong> I introduced freshers to various campus activities, student clubs, and technical societies, encouraging active participation to foster a vibrant college environment.<br>
+                 <p style="text-align: justify;"><strong>Environment Support:</strong> By acting as a reliable point of contact, I helped maintain a supportive and disciplined atmosphere, bridging the gap between the new batch and the college administration.</p>
+                
+                <p style="text-align: justify;">This role significantly enhanced my <strong>leadership, interpersonal communication, and organizational skills</strong>, while allowing me to contribute meaningfully to the growth of the institutional community.</p>`,
+
+            scout_leader: `<h2>Position of Responsibility: Bharat Scout and Guide</h2>
+                <p style="text-align: justify;">I served as a <strong>Group Leader</strong> within the Bharat Scout and Guide organization. This role was fundamental in shaping my early understanding of leadership, community service, and operational discipline.</p>
+                
+                <p style="text-align: justify;"><strong>Key Responsibilities & Leadership:</strong><br>
+                 <strong>Team Coordination:</strong> As a Group Leader, I was responsible for coordinating activities for my unit, ensuring that every member was engaged and contributing to our collective goals.<br>
+                 <strong>Event Management:</strong> I led the planning and execution of various field exercises, camp events, and community service projects, managing logistics and schedules under diverse conditions.<br>
+                 <strong>Discipline & Ethics:</strong> I ensured the disciplined execution of all protocols, fostering a culture of teamwork, integrity, and a professional approach toward responsibilities.</p>
+                
+                <p style="text-align: justify;">Through this experience, I developed strong <strong>crisis management, collaborative problem-solving, and leadership skills</strong>. It taught me the value of a structured, service-oriented mindset, which I carry into my professional engineering career.</p>`,
+
+        yoga_founder: `<h2>Position of Responsibility: Yoga Club Founder</h2>
+                <p style="text-align: justify;">I founded and led the <strong>Yoga Club</strong> at Jawahar Navodaya Vidyalaya (JNV), Nawada. This initiative was aimed at promoting physical fitness and mental well-being within a high-pressure residential academic environment.</p>
+                
+                <p style="text-align: justify;"><strong>Key Achievements & Leadership:</strong><br>
+                <strong>Scale & Growth:</strong> I established the club with an initial group of <strong>8 members</strong> and successfully expanded its reach and impact throughout my tenure.<br>
+                <strong>Competitive Success:</strong> Under my leadership and training, <strong>15 club members</strong> were selected for the <strong>District Level Yoga Championship</strong>.<br>
+                <strong>Regional Excellence:</strong> Furthering this success, <strong>4 members</strong> qualified for the <strong>Regional Level Yoga Championship</strong> held at JNV Banipur, North 24 Parganas.<br>
+                <strong>Organizational Impact:</strong> I managed daily practice sessions, coordinated logistics for championships, and fostered a culture of discipline and mindfulness.</p>
+                
+                <p style="text-align: justify;">This experience allowed me to develop significant <strong>entrepreneurial initiative, coaching skills, and organizational leadership</strong>, demonstrating my ability to build and lead a high-performing team from the ground up.</p>`,
+
+
+        	yoga_detail: `<h2>yoga</h2>
+		<p style="text-align: justify;">Yoga is a holistic practice that promotes physical, mental, and emotional well-being through a combination of postures, breathing techniques, and meditation. It helps improve flexibility, strength, and balance while reducing stress and enhancing concentration. Regular practice of yoga fosters discipline, mindfulness, and inner stability, making it beneficial for both personal and professional life. It also supports overall health by improving posture, boosting energy levels, and encouraging a balanced lifestyle.<p>`,
+            
+
+		chess_detail: `<h2>Chess</h2>
+                <p style="text-align: justify;">Chess is a strategic board game that enhances critical thinking, concentration, and decision-making skills. It requires planning, patience, and the ability to anticipate outcomes, making it an excellent exercise for the mind. Playing chess improves problem-solving abilities, logical reasoning, and focus under pressure. It also fosters discipline and strategic thinking, which are valuable in both academic and professional environments. Regular engagement in chess helps develop mental agility and a structured approach to tackling complex challenges.
+.</p>`,
+
+            others_detail: `<h2>Certifications & Workshops</h2>
+                <p style="text-align: justify;">I actively participate in quiz competitions and mind game challenges, which help enhance my general awareness, logical reasoning, and quick decision-making abilities. These activities strengthen my analytical thinking, improve focus under pressure, and keep me intellectually engaged while fostering a competitive and learning-oriented mindset.
+</p>`
+        };
+
+        function openModal(key) {
+            document.getElementById('modalText').innerHTML = data[key];
+            document.getElementById('infoModal').style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('infoModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
